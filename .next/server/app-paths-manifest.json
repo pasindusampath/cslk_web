@@ -1,9 +1,0 @@
-{
-  "/page": "app/page.js",
-  "/course-details/java/page": "app/course-details/java/page.js",
-  "/contact/page": "app/contact/page.js",
-  "/_not-found/page": "app/_not-found/page.js",
-  "/course-details/react/page": "app/course-details/react/page.js",
-  "/about/page": "app/about/page.js",
-  "/blog/page": "app/blog/page.js"
-}
