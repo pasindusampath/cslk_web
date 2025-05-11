@@ -1,0 +1,546 @@
+"use client"
+
+import { useState } from "react"
+import Image from "next/image"
+
+const courseData = {
+  title: "AI Chatbot Development",
+  subtitle: "Build smart chatbots using Node.js, NLP, and OpenAI APIs",
+  instructor: {
+    name: "Pasindu Sampath",
+    bio: "Senior Software Engineer with 12+ years in AI, backend systems, and messaging platforms. Specialized in WhatsApp automation, GPT integration, and production-ready bot deployment. Mentor to thousands of students in the AI field.",
+    image: "/instructors/pasindu-sampath.jpg",
+  },
+  fee: "$99.00",
+  discount: "$149.00",
+  lastUpdated: "20 April, 2025",
+  thumbnail: "/coursecards/ai.png",
+  tabs: ["Overview", "Curriculum", "Instructor", "Reviews"],
+  overview: {
+    description:
+      "Build your own smart chatbot using Node.js, Natural Language Processing, and AI models. Ideal for students and developers interested in AI, automation, or interactive systems.",
+    highlights: [
+      "Intro to AI, chatbots, and intelligent automation",
+      "Use NLP.js or TensorFlow.js for text understanding",
+      "Train intent recognition and entity extraction",
+      "Integrate OpenAI for smart conversational replies",
+      "Build custom chatbot flows and fallback logic",
+      "Deploy to Telegram, WhatsApp, or Web platforms",
+    ],
+  },
+  curriculum: {
+    duration: "5 weeks",
+    modules: [
+      { title: "Module 1: Intro to AI & Chatbots", lessons: 4, duration: "1 week" },
+      { title: "Module 2: NLP Basics with NLP.js / TensorFlow.js", lessons: 5, duration: "1 week" },
+      { title: "Module 3: Intent Recognition & Entities", lessons: 5, duration: "1 week" },
+      { title: "Module 4: Integrating OpenAI APIs", lessons: 5, duration: "1 week" },
+      { title: "Module 5: Building Custom Chatbot Flows", lessons: 5, duration: "1 week" },
+      { title: "Module 6: Deployment (e.g., Telegram, Web)", lessons: 3, duration: "0.5 weeks" },
+    ],
+  },
+  reviews: {
+    text: '"This bootcamp is next-level! I launched a working GPT bot on WhatsApp within 3 weeks thanks to Pasindu’s real-world training."',
+    additionalText: '"Highly recommended for anyone serious about AI automation and messaging tech!"',
+  },
+  learningPoints: [
+    { text: "Understand the basics of AI and chatbot development", color: "blue" },
+    { text: "Use NLP libraries to process user inputs", color: "blue" },
+    { text: "Connect OpenAI APIs for dynamic response generation", color: "blue" },
+    { text: "Build multi-turn and intent-driven conversations", color: "blue" },
+    { text: "Deploy bots to platforms like Telegram or web chat", color: "blue" },
+    { text: "Structure production-ready chatbot codebases", color: "blue" },
+  ],
+  requirements: [
+    { text: "JavaScript Basics", icon: "🟨" },
+    { text: "Node.js installed on your machine", icon: "💻" },
+    { text: "Curiosity to build AI-driven tools", icon: "🤖" },
+  ],
+};
+
+
+
+export default function CourseCard() {
+  const [activeTab, setActiveTab] = useState("Overview")
+
+  return (
+    <div style={{ paddingTop: "64px", paddingBottom: "64px", backgroundColor: "#F3F4F6" }}>
+    <div
+      style={{
+        fontFamily: "Inter, system-ui, sans-serif",
+        borderRadius: "16px",
+        overflow: "hidden",
+        boxShadow: "0 8px 30px rgba(0,0,0,0.12)",
+        maxWidth: "1000px",
+        margin: "0 auto",
+        backgroundColor: "#ffffff",
+      }}
+    >
+      {/* Header Image */}
+      <div style={{ position: "relative", width: "100%", height: "360px" }}>
+        <Image
+          src={courseData.thumbnail || "/placeholder.svg"}
+          alt="Course banner"
+          fill
+          style={{ objectFit: "cover" }}
+        />
+        <button
+          style={{
+            position: "absolute",
+            top: "20px",
+            right: "20px",
+            backgroundColor: "rgba(0,0,0,0.7)",
+            color: "#fff",
+            border: "none",
+            padding: "10px 16px",
+            borderRadius: "10px",
+            fontSize: "14px",
+            fontWeight: "500",
+            cursor: "pointer",
+            transition: "all 0.2s ease",
+          }}
+        >
+          Share
+        </button>
+      </div>
+
+      {/* Course Info Header */}
+      <div style={{ padding: "32px 36px" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+            flexWrap: "wrap",
+            gap: "24px",
+          }}
+        >
+          <div style={{ maxWidth: "65%" }}>
+            <div
+              style={{
+                display: "inline-block",
+                backgroundColor: "#007bff",
+                color: "#fff",
+                fontSize: "14px",
+                padding: "8px 16px",
+                borderRadius: "8px",
+                marginBottom: "16px",
+                fontWeight: "500",
+              }}
+            >
+              Online & Offline
+            </div>
+            <h1
+              style={{
+                fontSize: "28px",
+                fontWeight: "700",
+                margin: "0 0 16px 0",
+                lineHeight: "1.3",
+                color: "#111827",
+              }}
+            >
+              {courseData.subtitle}
+            </h1>
+            <p
+              style={{
+                fontSize: "16px",
+                color: "#4B5563",
+                margin: "0",
+              }}
+            >
+              Trainer: <span style={{ fontWeight: "600" }}>{courseData.instructor.name}</span> | Last Updated:{" "}
+              {courseData.lastUpdated}
+            </p>
+          </div>
+
+          <div style={{ textAlign: "right" }}>
+            <div style={{ marginBottom: "12px" }}>
+              <span
+                style={{
+                  fontSize: "28px",
+                  fontWeight: "700",
+                  color: "#007bff",
+                }}
+              >
+                {courseData.fee}
+              </span>
+              <span
+                style={{
+                  textDecoration: "line-through",
+                  marginLeft: "12px",
+                  color: "#9CA3AF",
+                  fontSize: "18px",
+                }}
+              >
+                {courseData.discount}
+              </span>
+            </div>
+            <button
+              style={{
+                padding: "14px 28px",
+                backgroundColor: "#007bff",
+                color: "#fff",
+                border: "none",
+                borderRadius: "10px",
+                fontSize: "16px",
+                fontWeight: "600",
+                cursor: "pointer",
+                boxShadow: "0 4px 12px rgba(0,123,255,0.25)",
+                transition: "all 0.2s ease",
+              }}
+            ><a href="https://wa.me/+94787149579">Enroll Now</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Tabs */}
+      <div
+        style={{
+          display: "flex",
+          gap: "32px",
+          borderBottom: "1px solid #E5E7EB",
+          padding: "0 36px",
+          marginBottom: "8px",
+        }}
+      >
+        {courseData.tabs.map((tab) => (
+          <div
+            key={tab}
+            onClick={() => setActiveTab(tab)}
+            style={{
+              cursor: "pointer",
+              padding: "16px 8px",
+              fontSize: "16px",
+              fontWeight: activeTab === tab ? 600 : 400,
+              color: activeTab === tab ? "#007bff" : "#4B5563",
+              borderBottom: activeTab === tab ? "3px solid #007bff" : "none",
+              transition: "all 0.2s ease",
+            }}
+          >
+            {tab}
+          </div>
+        ))}
+      </div>
+
+      {/* Tab Content */}
+      <div style={{ padding: "32px 36px 40px" }}>
+        {activeTab === "Overview" && (
+          <>
+            <h3
+              style={{
+                fontSize: "22px",
+                fontWeight: "600",
+                marginBottom: "20px",
+                color: "#111827",
+              }}
+            >
+              Course Overview
+            </h3>
+            <p
+              style={{
+                marginBottom: "24px",
+                color: "#374151",
+                fontSize: "16px",
+                lineHeight: "1.6",
+              }}
+            >
+              {courseData.overview.description}
+            </p>
+            <h4
+              style={{
+                fontSize: "18px",
+                fontWeight: "600",
+                marginBottom: "16px",
+                color: "#111827",
+              }}
+            >
+              Course Highlights
+            </h4>
+            <ul
+              style={{
+                listStyle: "none",
+                padding: "0",
+                color: "#374151",
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+                gap: "12px",
+              }}
+            >
+              {courseData.overview.highlights.map((point, idx) => (
+                <li
+                  key={idx}
+                  style={{
+                    marginBottom: "8px",
+                    fontSize: "16px",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px",
+                  }}
+                >
+                  <span
+                    style={{
+                      color: "#007bff",
+                      fontSize: "18px",
+                    }}
+                  >
+                    ✓
+                  </span>
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+
+        {activeTab === "Curriculum" && (
+          <>
+            <h3
+              style={{
+                fontSize: "22px",
+                fontWeight: "600",
+                marginBottom: "20px",
+                color: "#111827",
+              }}
+            >
+              Curriculum
+            </h3>
+            <p
+              style={{
+                fontSize: "16px",
+                marginBottom: "24px",
+              }}
+            >
+              Total Duration: <strong>{courseData.curriculum.duration}</strong>
+            </p>
+            <ul
+              style={{
+                marginTop: "16px",
+                padding: "0",
+                listStyle: "none",
+              }}
+            >
+              {courseData.curriculum.modules.map((mod, idx) => (
+                <li
+                  key={idx}
+                  style={{
+                    marginBottom: "16px",
+                    padding: "16px",
+                    borderRadius: "12px",
+                    backgroundColor: "#F9FAFB",
+                    border: "1px solid #E5E7EB",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: "17px",
+                      fontWeight: "600",
+                      marginBottom: "4px",
+                      color: "#111827",
+                    }}
+                  >
+                    {mod.title}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "15px",
+                      color: "#4B5563",
+                    }}
+                  >
+                    {mod.lessons} lessons ({mod.duration})
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+
+        {activeTab === "Instructor" && (
+          <>
+            <h3
+              style={{
+                fontSize: "22px",
+                fontWeight: "600",
+                marginBottom: "24px",
+                color: "#111827",
+              }}
+            >
+              Instructor
+            </h3>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "flex-start",
+                gap: "20px",
+                backgroundColor: "#F9FAFB",
+                padding: "24px",
+                borderRadius: "16px",
+              }}
+            >
+              <Image
+                src={courseData.instructor.image || "/placeholder.svg"}
+                alt="Instructor"
+                width={80}
+                height={80}
+                style={{
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                  border: "3px solid white",
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+                }}
+              />
+              <div>
+                <p
+                  style={{
+                    fontWeight: "700",
+                    margin: "0 0 8px 0",
+                    fontSize: "20px",
+                    color: "#111827",
+                  }}
+                >
+                  {courseData.instructor.name}
+                </p>
+                <p
+                  style={{
+                    margin: "0",
+                    color: "#4B5563",
+                    fontSize: "16px",
+                    lineHeight: "1.6",
+                  }}
+                >
+                  {courseData.instructor.bio}
+                </p>
+              </div>
+            </div>
+          </>
+        )}
+
+        {activeTab === "Reviews" && (
+          <>
+            <h3
+              style={{
+                fontSize: "22px",
+                fontWeight: "600",
+                marginBottom: "20px",
+                color: "#111827",
+              }}
+            >
+              Reviews
+            </h3>
+            <div
+              style={{
+                backgroundColor: "#F9FAFB",
+                padding: "24px",
+                borderRadius: "16px",
+                marginBottom: "32px",
+                borderLeft: "4px solid #007bff",
+              }}
+            >
+              <p
+                style={{
+                  fontSize: "18px",
+                  fontStyle: "italic",
+                  color: "#374151",
+                  lineHeight: "1.6",
+                  margin: "0 0 16px 0",
+                }}
+              >
+                {courseData.reviews.text}
+              </p>
+              <p
+                style={{
+                  fontSize: "18px",
+                  fontStyle: "italic",
+                  color: "#374151",
+                  lineHeight: "1.6",
+                  margin: "0",
+                }}
+              >
+                {courseData.reviews.additionalText}
+              </p>
+            </div>
+
+            <h4
+              style={{
+                fontSize: "20px",
+                fontWeight: "600",
+                marginTop: "32px",
+                marginBottom: "16px",
+                color: "#111827",
+              }}
+            >
+              What you'll learn
+            </h4>
+            <ul
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+                gap: "16px",
+                padding: "0",
+                listStyle: "none",
+              }}
+            >
+              {courseData.learningPoints.map((point, idx) => (
+                <li
+                  key={idx}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "10px",
+                    backgroundColor: "#EFF6FF",
+                    padding: "14px 18px",
+                    borderRadius: "10px",
+                    fontSize: "16px",
+                    color: "#1E40AF",
+                  }}
+                >
+                  <span>✓</span> {point.text}
+                </li>
+              ))}
+            </ul>
+
+            <h4
+              style={{
+                fontSize: "20px",
+                fontWeight: "600",
+                marginTop: "32px",
+                marginBottom: "16px",
+                color: "#111827",
+              }}
+            >
+              Requirements
+            </h4>
+            <ul
+              style={{
+                display: "flex",
+                gap: "16px",
+                flexWrap: "wrap",
+                padding: "0",
+                listStyle: "none",
+              }}
+            >
+              {courseData.requirements.map((req, idx) => (
+                <li
+                  key={idx}
+                  style={{
+                    backgroundColor: "#F9FAFB",
+                    padding: "14px 20px",
+                    borderRadius: "12px",
+                    border: "1px solid #E5E7EB",
+                    fontSize: "16px",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px",
+                  }}
+                >
+                  <span style={{ fontSize: "20px" }}>{req.icon}</span> {req.text}
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </div>
+    </div>
+    </div>
+  )
+}
